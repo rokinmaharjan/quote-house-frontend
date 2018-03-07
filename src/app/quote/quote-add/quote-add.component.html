@@ -1,0 +1,23 @@
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div class="form-group">
+    <label for="exampleTextarea">Quote</label>
+    <textarea
+      class="form-control"
+      id="exampleTextarea"
+      rows="3"
+      name="quote"
+      ngModel
+    ></textarea>
+  </div>
+  <div class="form-group">
+    <label for="author">Author</label>
+    <input type="text"
+           class="form-control"
+           id="author"
+           placeholder="John Doe"
+           ngModel
+           name = "author"
+    >
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

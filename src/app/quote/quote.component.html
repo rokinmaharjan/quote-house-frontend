@@ -1,0 +1,19 @@
+<div class="quote-container">
+  <h3><u>Today's top quotes</u></h3>
+  <blockquote class="quote">
+    <div
+      *ngFor="let quote of quotes"
+    >
+      {{quote.quote}}
+      <footer class="blockquote-footer">{{quote.author}}</footer>
+      <hr>
+    </div>
+  </blockquote>
+
+</div>
+<a routerLink="/quote-add">
+  <button class="btn btn-success">Add Quote</button>
+</a>
+
+
+
