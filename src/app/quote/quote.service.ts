@@ -5,8 +5,8 @@ import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class QuoteService {
-  // private GET_ALL_QUOTES_URL = 'https://quotehouse-backend.herokuapp.com/quotes';
-  // private POST_QUOTE_URL = 'https://quotehouse-backend.herokuapp.com/quotes/quote';
+  private GET_ALL_QUOTES_URL = 'https://quotehouse-backend.herokuapp.com/quotes';
+  private POST_QUOTE_URL = 'https://quotehouse-backend.herokuapp.com/quotes/quote';
 
   private quotes: Quote[] = [];
 
@@ -14,12 +14,10 @@ export class QuoteService {
   }
 
   getQuotes(): Observable<Object> {
-    // return this.http.get(this.GET_ALL_QUOTES_URL);
-    return null;
+    return this.http.get(this.GET_ALL_QUOTES_URL);
   }
 
   addQuote(quote: Quote): Observable<Object> {
-    // return this.http.post(this.POST_QUOTE_URL, quote);
-    return null;
+    return this.http.post(this.POST_QUOTE_URL, quote);
   }
 }
