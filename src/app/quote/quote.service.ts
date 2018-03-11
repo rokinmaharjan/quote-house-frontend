@@ -1,27 +1,23 @@
 import {Injectable} from '@angular/core';
 import {Quote} from "./quote.model";
 import {Observable} from "rxjs/Observable";
-import {of} from "rxjs/observable/of";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class QuoteService {
+  private GET_ALL_QUOTES_URL = 'https://stormy-savannah-51107.herokuapp.com/quotes';
+  private POST_QUOTE_URL = 'https://stormy-savannah-51107.herokuapp.com/quotes/quote';
 
-  quotes: Quote[] = [];
+  private quotes: Quote[] = [];
 
-
-  constructor() {
-    this.quotes = [new Quote('The world is a beautiful place.', 'Rokin Maharjan'),
-      new Quote('Inspite of everything, I still believe people are good at the heart.', 'Anne Frank')
-    ];
+  constructor(private http: HttpClient) {
   }
 
-  getQuotes(): Observable<Quote[]> {
-    return of(this.quotes);
+  getQuotes(): Observable<Object> {
+    return this.http.get(this.GET_ALL_QUOTES_URL);
   }
 
-  addQuote(quote: Quote) {
-    this.quotes.push(quote);
-    console.log(this.quotes);
+  addQuote(quote: Quote): Observable<Object> {
+    return this.http.post(this.POST_QUOTE_URL, quote);
   }
-
 }

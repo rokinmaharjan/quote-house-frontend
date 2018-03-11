@@ -9,6 +9,7 @@ import {QuoteAddComponent} from './quote/quote-add/quote-add.component';
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {QuoteService} from './quote/quote.service';
+import {HttpClientModule} from "@angular/common/http";
 
 
 const appRoutes: Routes = [
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(
       appRoutes
-    )
+    ),
+    HttpClientModule
   ],
   providers: [QuoteService],
   bootstrap: [AppComponent]

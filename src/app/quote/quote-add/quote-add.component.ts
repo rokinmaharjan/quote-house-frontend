@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {Quote} from "../quote.model";
 import {QuoteService} from "../quote.service";
 import {Router} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-quote-add',
@@ -11,7 +12,9 @@ import {Router} from "@angular/router";
 })
 export class QuoteAddComponent implements OnInit {
 
-  constructor(private router: Router, private quoteService: QuoteService) {
+  constructor(private quoteService: QuoteService,
+              private router: Router,
+              private http: HttpClient) {
   }
 
   ngOnInit() {
@@ -23,7 +26,10 @@ export class QuoteAddComponent implements OnInit {
 
     const quote: Quote = new Quote(quoteBody, author);
 
-    this.quoteService.addQuote(quote);
+    this.quoteService.addQuote(quote).subscribe(data => {
+      },
+      error => console.log('Error while posting quote.')
+    );
 
     this.router.navigate(['/']);
   }
