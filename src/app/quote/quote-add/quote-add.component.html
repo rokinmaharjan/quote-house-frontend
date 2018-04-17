@@ -17,8 +17,30 @@
            id="author"
            placeholder="Albert Einstein"
            ngModel
-           name = "author"
+           name="author"
     >
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="form-group">
+    <label>Tags</label>
+    <tag-input class="form-control"
+               [ngModel]="tags"
+               name="tags"
+               (onAdd)="onAdded($event)"
+               (onRemove)="onRemoved($event)"
+    ></tag-input>
+
+  </div>
+
+
+
+  <button routerLink="/home" class="btn btn-danger">Cancel</button>
+  <button type="submit" class="btn btn-success">Submit</button>
+
+
+
+  <!--<tags-input class="form-control input-lg" (onTagsChanged)="onTagsChanged($event)"-->
+  <!--[removeLastOnBackspace]="removeLastOnBackspace" [(ngModel)]="tags" name="tags"></tags-input>-->
+
+
+
 </form>

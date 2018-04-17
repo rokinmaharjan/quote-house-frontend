@@ -10,10 +10,13 @@ import {RouterModule, Routes} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {QuoteService} from './quote/quote.service';
 import {HttpClientModule} from "@angular/common/http";
+import {TagInputModule} from "ngx-chips";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 const appRoutes: Routes = [
-  {path: '', component: QuoteComponent},
+  {path: 'home', component: QuoteComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'quote-add', component: QuoteAddComponent}
 ]
 
@@ -27,12 +30,16 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(
       appRoutes
     ),
-    HttpClientModule
+    TagInputModule,
+    BrowserAnimationsModule
   ],
-  providers: [QuoteService],
+  providers: [
+    QuoteService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
