@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Quote} from "./quote.model";
 import {Observable} from "rxjs/Observable";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 
 @Injectable()
 export class QuoteService {
@@ -19,8 +19,10 @@ export class QuoteService {
   constructor(private http: HttpClient) {
   }
 
-  getQuotes(): Observable<Object> {
-    return this.http.get(this.GET_ALL_QUOTES_URL);
+  getQuotesWithPagination(page, size): Observable<Object> {
+    return this.http.get(this.GET_ALL_QUOTES_URL, {
+      params: new HttpParams().set('page', page).set('size', size)
+    });
   }
 
   addQuote(quote: Quote): Observable<Object> {
